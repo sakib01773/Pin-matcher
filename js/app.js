@@ -33,12 +33,25 @@ document.getElementById("verify-pin").addEventListener('click',function(){
     const typeNumberField = document.getElementById("typed-numbers");
     const pinSucceSms = document.getElementById("pin-success");
     const pinFailusms =document.getElementById("pin-failure");
-    if(displayField.value == typeNumberField.value){
-       
-        pinSucceSms.style.display = "block"
-        pinFailusms.style.display = "none"
-    }else{
-        pinSucceSms.style.display = "none"
-        pinFailusms.style.display = "block"
+    
+   if(typeNumberField.value == '' && displayField.value == '' ){
+        return "error"
+   }else{
+        if(displayField.value == typeNumberField.value){
+        
+            pinSucceSms.style.display = "block"
+            pinFailusms.style.display = "none"
+        }else{
+            pinSucceSms.style.display = "none"
+            pinFailusms.style.display = "block"
+        }
+   }
+    const attempt = document.getElementById("left");
+    const numberString = attempt.innerText;
+    const Number = parseInt(numberString);
+    attempt.innerText = Number-1
+    if(attempt.innerText == "0"){
+        document.getElementById("verify-pin").setAttribute('disabled', true);
     }
+    
 })
